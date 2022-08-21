@@ -1,18 +1,19 @@
 let myLibrary = [];
 const container = document.querySelector(".card-container");
+const title = document.getElementById("title");
+const auther = document.getElementById("auther");
+const pages = document.getElementById("pages");
+const haveRead = document.getElementById("read");
 
 function book(auther, title, pages, haveRead) {
-  this.auther = auther;
   this.title = title;
+  this.auther = auther;
   this.pages = pages;
   this.haveRead = haveRead;
 }
 function addBookToLibrary() {
-  let auther = prompt("what is the auther name?", "Unknown");
-  let title = prompt("what is the title", "Unknown");
-  let pages = prompt("how many pages does the book have?", "Unknown");
-  let haveRead = prompt("have you read it?", false);
-  let newBook = new book(auther, title, pages, haveRead);
+  let checked = haveRead.checked ? true : false;
+  let newBook = new book(title.value, auther.value, pages.value, checked);
   myLibrary.push(newBook);
   display(newBook);
 }
@@ -29,11 +30,14 @@ let display = (newBook) => {
   card.classList.add("card");
   container.appendChild(card);
   title.classList.add("title");
+  title.innerText = newBook.title;
   card.appendChild(title);
   auther.classList.add("auther");
   card.appendChild(auther);
+  auther.innerText = newBook.auther;
   pages.classList.add("pages");
   card.appendChild(pages);
+  pages.innerText = newBook.pages;
   label.classList.add("label-container");
   input.type = "checkbox";
   input.checked = newBook.haveRead;
