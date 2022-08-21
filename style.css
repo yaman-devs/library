@@ -50,6 +50,27 @@ label>* {
     font-family: 'Courier New', Courier, monospace;
 }
 
+.card>* {
+    margin: 0 1rem;
+
+}
+
+.delete-button {
+    align-self: end;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: red;
+    color: #fff;
+    border: 0;
+    border-radius: 4px;
+    aspect-ratio: 1;
+}
+
+.delete-button:hover {
+    cursor: pointer;
+    opacity: 0.9;
+}
+
 .title {
     overflow-wrap: break-word;
 }
@@ -74,10 +95,7 @@ label>* {
 
 }
 
-.card>* {
-    margin-left: 1rem;
 
-}
 
 .label-container {
     display: block;

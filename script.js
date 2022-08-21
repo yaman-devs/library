@@ -26,9 +26,14 @@ let display = (newBook) => {
   const label = document.createElement("label");
   const checkbox = document.createElement("span");
   const input = document.createElement("input");
+  const deleteButton = document.createElement("button");
+  deleteButton.classList.add("delete-button");
+  deleteButton.innerText = "X";
 
   card.classList.add("card");
+  card.dataset.index = myLibrary.length - 1;
   container.appendChild(card);
+  card.appendChild(deleteButton);
   title.classList.add("title");
   title.innerText = newBook.title;
   card.appendChild(title);
@@ -45,4 +50,11 @@ let display = (newBook) => {
   label.appendChild(input);
   label.appendChild(checkbox);
   card.appendChild(label);
+
+  deleteButton.addEventListener("click", deleteBook);
+  function deleteBook(e) {
+    let obj = e.target.parentNode;
+    myLibrary.splice(obj.dataset.index, 1);
+    obj.parentNode.removeChild(obj);
+  }
 };
