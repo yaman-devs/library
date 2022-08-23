@@ -5,14 +5,18 @@ const auther = document.getElementById("auther");
 const pages = document.getElementById("pages");
 const haveRead = document.getElementById("read");
 
-function book(auther, title, pages, haveRead) {
-  this.title = title;
-  this.auther = auther;
-  this.pages = pages;
-  this.haveRead = haveRead;
+class book {
+  constructor(title, auther, pages, haveRead) {
+    this.title = title;
+    this.auther = auther;
+    this.pages = pages;
+    this.haveRead = haveRead;
+  }
 }
 function addBookToLibrary() {
   let checked = haveRead.checked ? true : false;
+  if (myLibrary.some((e) => e.title === title.value))
+    return alert("library has the same book");
   let newBook = new book(title.value, auther.value, pages.value, checked);
   myLibrary.push(newBook);
   display(newBook);
