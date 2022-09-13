@@ -13,6 +13,68 @@ class book {
     this.haveRead = haveRead;
   }
 }
+
+//  Validation /--
+title.addEventListener("input", (event) => {
+  const error = document.querySelector("#title + div.error");
+
+  if (title.validity.valid) {
+    error.textContent = "";
+    error.className = "error";
+  } else {
+    showError(event.target, error);
+  }
+});
+
+auther.addEventListener("input", (event) => {
+  const error = document.querySelector("#auther + div.error");
+  if (auther.validity.valid) {
+    error.textContent = "";
+    error.className = "error";
+  } else {
+    showError(event.target, error);
+  }
+});
+
+function showError(e, error) {
+  if (e.validity.valueMissing) {
+    error.textContent = `You need to enter a/an ${e.id}.`;
+  } else if (e.validity.typeMismatch) {
+    error.textContent = `Entered value must be ${e.type}`;
+  } else if (e.validity.tooShort) {
+    error.textContent = `Title should be at least ${e.minLength} characters; you entered ${e.value.length}.`;
+  }
+  error.className = "error active";
+}
+
+const button = document.querySelector("button");
+button.addEventListener("click", (event) => {
+  const titleError = document.querySelector("#title + div.error");
+  const autherError = document.querySelector("#auther + div.error");
+  const pagesError = document.querySelector("#pages + div.error ");
+
+  if (!title.validity.valid) {
+    showError(title, titleError);
+    event.preventDefault();
+  } else if (!auther.validity.valid) {
+    showError(auther, autherError);
+    event.preventDefault();
+  } else if (!pages.validity.valid) {
+    pagesError.textContent = "You need to enter pages number.";
+    event.preventDefault();
+  } else {
+    titleError.textContent = "";
+    autherError.textContent = "";
+    pagesError.textContent = "";
+    titleError.className = "error";
+    autherError.className = "error";
+    pagesError.className = "error";
+    addBookToLibrary(title);
+  }
+});
+
+// --/
+
 function addBookToLibrary() {
   let checked = haveRead.checked ? true : false;
   if (myLibrary.some((e) => e.title === title.value))
