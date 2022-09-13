@@ -108,11 +108,37 @@ label>* {
 }
 
 .label-container input {
+    appearance: none;
     position: absolute;
     opacity: 0;
     cursor: pointer;
     height: 0;
     width: 0;
+    box-sizing: border-box;
+}
+
+input:invalid {
+    border-color: #900;
+    background-color: #fdd;
+}
+
+input:focus:invalid {
+    outline: none;
+}
+
+.error {
+    width: 100%;
+    padding: 0;
+    font-size: 80%;
+    color: white;
+    background-color: #900;
+    border-radius: 0 0 5px 5px;
+
+    box-sizing: border-box;
+}
+
+.error.active {
+    padding: 0.3em;
 }
 
 .checkmark {
@@ -143,6 +169,8 @@ label>* {
 .label-container input:checked~.checkmark:after {
     display: block;
 }
+
+
 
 .label-container .checkmark:after {
     left: 9px;

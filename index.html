@@ -12,11 +12,18 @@
 
 <body>
     <div class="container">
-        <div class="form"><label for="title">TITLE:<input id="title" type="text"></label>
-            <label for="auther">AUTHER:<input id="auther" type="text"></label>
-            <label for="pages">PAGES:<input id="pages" type="number"></label>
+        <div class="form" novalidate>
+            <label for="title">TITLE:<input id="title" type="text" minlength="3" required>
+                <div class="error" aria-live="polite"></div>
+            </label>
+            <label for="auther">AUTHER:<input id="auther" type="text" minlength="2" required>
+                <div class="error" aria-live="polite"></div>
+            </label>
+            <label for="pages">PAGES:<input id="pages" type="number" required>
+                <div class="error" aria-live="polite"></div>
+            </label>
             <label for="read">READ:<input id="read" type="checkbox"></label>
-            <button onclick="addBookToLibrary(title)">ADD NEW BOOK</button>
+            <button>ADD NEW BOOK</button>
         </div>
         <div class="card-container">
 
